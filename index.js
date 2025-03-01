@@ -190,6 +190,37 @@ const handleCheckTinhThue = (chiuThue) => {
   return numChiuThue;
 };
 
+const handleTinhThue = () => {
+  let getHoTen = document.querySelector("#form-hoTen").value;
+  console.log("ho ten:", getHoTen);
+  let getThuNhap = document.querySelector("#form-thuNhap").value * 1;
+  console.log("thu nhap nam:", getThuNhap);
+  let getPhuThuoc = document.querySelector("#form-phuThuoc").value * 1;
+  console.log("phu thuoc:", getPhuThuoc);
+  if (!getHoTen || !getThuNhap || getPhuThuoc < 0 || isNaN(getPhuThuoc)) {
+    alert("Mời nhập đủ thông tin");
+    return;
+  }
+  if (getThuNhap < 10e6) {
+    alert("Không cần đóng thuế");
+    return;
+  }
+
+  let thuNhapChiuThue = 0;
+  thuNhapChiuThue = getThuNhap - 4000000 - getPhuThuoc * 1600000;
+  let getSoChiuThue = handleCheckTinhThue(thuNhapChiuThue);
+  console.log("=> tienPhaiTra:", getSoChiuThue);
+  ketQua.classList.remove("d-none");
+  ketQua.classList.add("bg-primary");
+  ketQua.innerHTML =
+    "Họ tên: " +
+    getHoTen +
+    " " +
+    "Tiền thuế phải trả: " +
+    getSoChiuThue.toLocaleString() +
+    " VND";
+};
+
 // Bài tập 4
 
 const onDisplay = () => {
@@ -216,6 +247,10 @@ const handleTienCap = () => {
   let getmaKH = document.querySelector("#form-maKH").value * 1;
   let getSoKenhCC = document.querySelector("#form-kenhCC").value * 1;
   let getSoKetNoi = document.querySelector("#form-soKetNoi").value * 1;
+  if (!getloaiKH || !getmaKH || !getSoKenhCC || !getSoKetNoi) {
+    alert("Mời nhập đủ thông tin");
+    return;
+  }
   let tongTien = 0;
   let phiDichVu = handleSoCapDN(getSoKetNoi);
   if (getloaiKH === 1) {
@@ -233,30 +268,6 @@ const handleTienCap = () => {
     tongTien.toLocaleString() +
     "USD";
 };
-
-const handleTinhThue = () => {
-  let getHoTen = document.querySelector("#form-hoTen").value;
-  console.log("ho ten:", getHoTen);
-  let getThuNhap = document.querySelector("#form-thuNhap").value * 1;
-  console.log("thu nhap nam:", getThuNhap);
-  let getPhuThuoc = document.querySelector("#form-phuThuoc").value * 1;
-  console.log("phu thuoc:", getPhuThuoc);
-  let thuNhapChiuThue = 0;
-  thuNhapChiuThue = getThuNhap - 4000000 - getPhuThuoc * 1600000;
-  let getSoChiuThue = handleCheckTinhThue(thuNhapChiuThue);
-  console.log("=> tienPhaiTra:", getSoChiuThue);
-  ketQua.classList.remove("d-none");
-  ketQua.classList.add("bg-primary");
-  ketQua.innerHTML =
-    "Họ tên: " +
-    getHoTen +
-    " " +
-    "Tiền thuế phải trả: " +
-    getSoChiuThue.toLocaleString() +
-    " VND";
-};
-
-//
 
 function hienThiBai(bai) {
   ketQua.classList.add("d-none");
