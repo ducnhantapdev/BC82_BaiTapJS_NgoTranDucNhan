@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bài tập JS</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <div class="wrapper-content d-xl-flex mt-3 d-sm-block">
+          <!-- Tab menu-->
+          <div class="grid col-1">
+            <button
+              type="button"
+              class="btn btn-primary mt-2"
+              onclick="hienThiBai(1)"
+            >
+              Bài tập 1
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary mt-2"
+              onclick="hienThiBai(2)"
+            >
+              Bài tập 2
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary mt-2"
+              onclick="hienThiBai(3)"
+            >
+              Bài tập 3
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary mt-2"
+              onclick="hienThiBai(4)"
+            >
+              Bài tập 4
+            </button>
+          </div>
+          <!--- Content--->
+          <div class="content">
+            <div class="main-content">
+              <!-- Bai tap 1 -->
+              <div class="mb-3">
+                <h5>Bài tập 1: Quản lý tuyển sinh</h5>
+                <!-- Điểm chuẩn -->
+                <div class="mb-3">
+                  <label for="" class="form-label">Nhập điểm chuẩn</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    name=""
+                    id="form-diemChuan"
+                    aria-describedby="helpId"
+                    placeholder=""
+                  />
+                </div>
+
+                <!-- Chọn khu vực -->
+                <div class="mb-3">
+                  <select
+                    class="form-select form-select-lg"
+                    name=""
+                    id="checkbox-khuVuc"
+                  >
+                    <option selected value="zone0">Chọn khu vực</option>
+                    <option value="zoneA">A</option>
+                    <option value="zoneB">B</option>
+                    <option value="zoneC">C</option>
+                  </select>
+                </div>
+                <!-- Chọn đối tượng -->
+                <div class="mb-3">
+                  <select
+                    class="form-select form-select-lg"
+                    name=""
+                    id="checkbox-doiTuong"
+                  >
+                    <option selected value="obj-0">Chọn đối tượng</option>
+                    <option value="obj-1">1</option>
+                    <option value="obj-2">2</option>
+                    <option value="obj-3">3</option>
+                  </select>
+                </div>
+
+                <label for="" class="form-label">Nhập Điểm Môn 1</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name=""
+                  id="form-diem1"
+                  aria-describedby="helpId"
+                  placeholder=""
+                />
+                <label for="" class="form-label">Nhập Điểm Môn 2</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name=""
+                  id="form-diem2"
+                  aria-describedby="helpId"
+                  placeholder=""
+                />
+                <label for="" class="form-label">Nhập Điểm Môn 3</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name=""
+                  id="form-diem3"
+                  aria-describedby="helpId"
+                  placeholder=""
+                />
+              </div>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="handleTuyenSinh()"
+              >
+                Tính
+              </button>
+            </div>
+
+            <div id="ketQua" class="ketQua text-white mt-3 p-2 d-none">
+              Kết quả:
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="index.js"></script>
+  </body>
+</html>
