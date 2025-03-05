@@ -155,37 +155,44 @@ const handleTienDien = () => {
 const handleCheckTinhThue = (chiuThue) => {
   let numChiuThue = 0;
   if (chiuThue <= 6e7) {
-    numChiuThue = 0.05 * chiuThue;
+    // numChiuThue = 0.05 * chiuThue;
+    numChiuThue = 0.05;
   } else if (chiuThue <= 12e7) {
-    numChiuThue = 0.05 * 6e7 + 0.1 * (chiuThue - 6e7);
+    // numChiuThue = 0.05 * 6e7 + 0.1 * (chiuThue - 6e7);
+    numChiuThue = 0.1;
   } else if (chiuThue <= 21e7) {
-    numChiuThue = 0.05 * 6e7 + 0.1 * 6e7 + 0.15 * (chiuThue - 12e7);
+    // numChiuThue = 0.05 * 6e7 + 0.1 * 6e7 + 0.15 * (chiuThue - 12e7);
+    numChiuThue = 0.15;
   } else if (chiuThue <= 3.84e8) {
-    numChiuThue = 0.05 * 6e7 + 0.1 * 6e7 + 0.15 * 9e7 + 0.2 * (chiuThue - 21e7);
+    // numChiuThue = 0.05 * 6e7 + 0.1 * 6e7 + 0.15 * 9e7 + 0.2 * (chiuThue - 21e7);
+    numChiuThue = 0.2;
   } else if (chiuThue <= 6.24e8) {
-    numChiuThue =
-      0.05 * 6e7 +
-      0.1 * 6e7 +
-      0.15 * 9e7 +
-      0.2 * 174e6 +
-      0.25 * (chiuThue - 3.84e8);
+    // numChiuThue =
+    //   0.05 * 6e7 +
+    //   0.1 * 6e7 +
+    //   0.15 * 9e7 +
+    //   0.2 * 174e6 +
+    //   0.25 * (chiuThue - 3.84e8);
+    numChiuThue = 0.25;
   } else if (chiuThue <= 9.6e8) {
-    numChiuThue =
-      0.05 * 6e7 +
-      0.1 * 6e7 +
-      0.15 * 9e7 +
-      0.2 * 174e6 +
-      0.25 * 240e6 +
-      0.3 * (chiuThue - 6.24e8);
+    // numChiuThue =
+    //   0.05 * 6e7 +
+    //   0.1 * 6e7 +
+    //   0.15 * 9e7 +
+    //   0.2 * 174e6 +
+    //   0.25 * 240e6 +
+    //   0.3 * (chiuThue - 6.24e8);
+    numChiuThue = 0.3;
   } else {
-    numChiuThue =
-      0.05 * 6e7 +
-      0.1 * 6e7 +
-      0.15 * 9e7 +
-      0.2 * 174e6 +
-      0.25 * 240e6 +
-      0.3 * 336e6 +
-      0.35 * (chiuThue - 9.6e8);
+    // numChiuThue =
+    //   0.05 * 6e7 +
+    //   0.1 * 6e7 +
+    //   0.15 * 9e7 +
+    //   0.2 * 174e6 +
+    //   0.25 * 240e6 +
+    //   0.3 * 336e6 +
+    //   0.35 * (chiuThue - 9.6e8);
+    numChiuThue = 0.35;
   }
   return numChiuThue;
 };
@@ -209,7 +216,8 @@ const handleTinhThue = () => {
   let thuNhapChiuThue = 0;
   thuNhapChiuThue = getThuNhap - 4000000 - getPhuThuoc * 1600000;
   let getSoChiuThue = handleCheckTinhThue(thuNhapChiuThue);
-  console.log("=> tienPhaiTra:", getSoChiuThue);
+  let tongTien = thuNhapChiuThue * getSoChiuThue;
+  console.log("=> tienPhaiTra:", tongTien);
   ketQua.classList.remove("d-none");
   ketQua.classList.add("bg-primary");
   ketQua.innerHTML =
@@ -217,7 +225,7 @@ const handleTinhThue = () => {
     getHoTen +
     " " +
     "Tiền thuế phải trả: " +
-    getSoChiuThue.toLocaleString() +
+    tongTien.toLocaleString() +
     " VND";
 };
 
@@ -247,10 +255,15 @@ const handleTienCap = () => {
   let getmaKH = document.querySelector("#form-maKH").value * 1;
   let getSoKenhCC = document.querySelector("#form-kenhCC").value * 1;
   let getSoKetNoi = document.querySelector("#form-soKetNoi").value * 1;
-  if (!getloaiKH || !getmaKH || !getSoKenhCC || !getSoKetNoi) {
+  if (getloaiKH === 2 && !getSoKetNoi) {
     alert("Mời nhập đủ thông tin");
     return;
   }
+  if (!getloaiKH || !getmaKH || !getSoKenhCC) {
+    alert("Mời nhập đủ thông tin");
+    return;
+  }
+
   let tongTien = 0;
   let phiDichVu = handleSoCapDN(getSoKetNoi);
   if (getloaiKH === 1) {
